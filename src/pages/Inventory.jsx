@@ -3,7 +3,7 @@
 // ✅ Items card has class "inv-card-items" so CSS can force fixed layout
 // ✅ Everything else unchanged
 
-import "./inventory.css";
+import "./Inventory.css";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
