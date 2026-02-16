@@ -1,0 +1,249 @@
+/* inventory.css (RESPONSIVE FINAL + REAL FIX)
+   ✅ Items card uses GRID rows: title, filters, table(1fr)
+   ✅ Table fills remaining space (no big blank area)
+   ✅ Table scrolls inside the card
+*/
+
+.inv-wrap {
+  padding: 20px;
+}
+
+/* Header */
+.inv-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* Typography helpers */
+.page-title {
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  margin: 0;
+  color: #0f2f1a;
+}
+
+.page-subtitle {
+  margin: 8px 0 0;
+  font-size: 14px;
+  opacity: 0.75;
+  color: #0f2f1a;
+}
+
+/* Main grid */
+.inv-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Cards */
+.inv-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.inv-card h3 {
+  margin: 0 0 12px;
+}
+
+.inv-form {
+  display: grid;
+  gap: 10px;
+}
+
+/* ✅ Responsive rows */
+.inv-row-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.inv-row-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.inv-input,
+.inv-select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: none;
+  background: #f3f6f2;
+}
+
+/* =========================
+   Buttons
+========================= */
+.inv-btn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #e9efe6;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.inv-btn:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.inv-btn-in:hover {
+  background: #d8f5d2;
+  border-color: #3a8f3a;
+  color: #1d4d1d;
+}
+
+.inv-btn-out:hover {
+  background: #ffd6d6;
+  border-color: #b33a3a;
+  color: #6b1e1e;
+}
+
+.inv-btn-primary {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #b7e600;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.inv-btn-primary:hover {
+  filter: brightness(0.92);
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   ✅ REAL FIX FOR YOUR ISSUE (Items card)
+   - Uses CSS GRID rows
+   - Forces table area to fill remaining space
+========================================= */
+
+.inv-card-items {
+  /* ✅ Force a fixed card height (adjust if you want) */
+  height: 520px;
+
+  /* ✅ Make it a grid: title, filters, table */
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+
+  /* IMPORTANT for scroll areas */
+  min-height: 0;
+}
+
+/* Table wrapper fills last row */
+.inv-card-items .inv-table-wrap {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table */
+.inv-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+.inv-table th,
+.inv-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.inv-table th {
+  font-weight: 700;
+  background: #f3f6f2;
+}
+
+/* ✅ Sticky header */
+.inv-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f3f6f2;
+}
+
+/* ✅ Tablet */
+@media (max-width: 1000px) {
+  .inv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-title {
+    font-size: 38px;
+  }
+
+  .inv-table {
+    min-width: 720px;
+  }
+
+  /* On smaller screens, allow card to be taller */
+  .inv-card-items {
+    height: 60vh;
+  }
+}
+
+/* ✅ Mobile */
+@media (max-width: 600px) {
+  .inv-wrap {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 30px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+  }
+
+  .inv-card {
+    padding: 12px;
+  }
+
+  .inv-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .inv-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .inv-btn {
+    width: 100%;
+  }
+
+  .inv-table {
+    min-width: 680px;
+  }
+
+  .inv-card-items {
+    height: 65vh;
+  }
+}

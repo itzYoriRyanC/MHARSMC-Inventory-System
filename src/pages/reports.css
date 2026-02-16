@@ -1,0 +1,348 @@
+/* src/pages/reports.css
+   ✅ Professional + responsive Reports layout (FINAL)
+   ✅ Filters row: 3 cols (desktop) → 2 cols (tablet) → 1 col (mobile)
+   ✅ Inputs/selects same height for clean look
+   ✅ Table scrolls safely without breaking layout
+   ✅ Matches your green theme
+*/
+
+.rep-wrap {
+  padding: 20px;
+}
+
+/* =========================
+   Header
+========================= */
+.rep-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.rep-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   Summary cards
+========================= */
+.rep-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.rep-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.rep-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rep-card-title {
+  font-weight: 900;
+  color: #0f2f1a;
+}
+
+.rep-card-number {
+  font-size: 36px;
+  font-weight: 900;
+  margin-top: 10px;
+  color: #0f2f1a;
+}
+
+.rep-card-big {
+  font-size: 30px;
+  font-weight: 900;
+  margin-top: 10px;
+  color: #0f2f1a;
+}
+
+.rep-card-sub {
+  margin-top: 6px;
+  font-size: 13px;
+  opacity: 0.75;
+  color: #0f2f1a;
+}
+
+.rep-mini {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.tag-warn {
+  background: #fff1c9;
+}
+
+.tag-fefo {
+  background: #ffe0e0;
+}
+
+.tag-usage {
+  background: #e6f2ff;
+}
+
+/* =========================
+   Table card
+========================= */
+.rep-table-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Tabs + refresh row */
+.rep-tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.rep-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rep-tab {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #f3f6f2;
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.18s ease;
+}
+
+.rep-tab:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.rep-tab.active {
+  background: #e6f39b;
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+/* =========================
+   ✅ Filters row (FIXED)
+   - Desktop: 3 columns
+   - Tablet: 2 columns
+   - Mobile: 1 column
+========================= */
+.rep-filters {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr; /* ✅ balanced */
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: stretch; /* ✅ same height look */
+}
+
+.rep-input,
+.rep-select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  height: 42px; /* ✅ consistent input/select height */
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  outline: none;
+  background: #f3f6f2;
+}
+
+.rep-input:focus,
+.rep-select:focus {
+  border-color: rgba(15, 47, 26, 0.35);
+  box-shadow: 0 0 0 3px rgba(183, 230, 0, 0.18);
+}
+
+/* Title */
+.rep-table-title {
+  font-weight: 900;
+  color: #0f2f1a;
+  margin: 8px 0 10px;
+}
+
+/* =========================
+   Table wrapper (SAFE)
+========================= */
+.rep-table-wrap {
+  width: 100%;
+  overflow-x: auto; /* ✅ horizontal only */
+  overflow-y: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* nicer scroll bar */
+.rep-table-wrap::-webkit-scrollbar {
+  height: 10px;
+}
+.rep-table-wrap::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+}
+
+.rep-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px; /* ✅ keeps table readable; scroll when needed */
+}
+
+.rep-table th,
+.rep-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.rep-table th {
+  font-weight: 900;
+  background: #f3f6f2;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Pills */
+.pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.pill-yellow {
+  background: #fff1c9;
+}
+
+.pill-red {
+  background: #ffd6d6;
+}
+
+.pill-fefo {
+  background: #ffe0e0;
+}
+
+/* Buttons */
+.rep-btn {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #e9efe6;
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.18s ease;
+}
+
+.rep-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.rep-btn-primary {
+  border: none;
+  background: #b7e600;
+}
+
+.rep-btn-primary:hover {
+  filter: brightness(0.92);
+}
+
+.rep-loading {
+  padding: 14px;
+}
+
+.rep-empty {
+  padding: 14px;
+  opacity: 0.75;
+}
+
+.rep-tip {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+/* =========================
+   ✅ Tablet (2 columns filters)
+========================= */
+@media (max-width: 1100px) {
+  .rep-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* ✅ 2 columns on tablet, search gets full row */
+  .rep-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rep-input {
+    grid-column: 1 / -1; /* ✅ search spans full width */
+  }
+
+  .rep-table {
+    min-width: 820px;
+  }
+}
+
+/* =========================
+   ✅ Mobile (1 column filters)
+========================= */
+@media (max-width: 600px) {
+  .rep-wrap {
+    padding: 12px;
+  }
+
+  .rep-card-big {
+    font-size: 24px;
+  }
+
+  .rep-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .rep-input {
+    grid-column: auto;
+  }
+
+  .rep-table {
+    min-width: 760px;
+  }
+}

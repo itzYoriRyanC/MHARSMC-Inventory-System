@@ -1,0 +1,152 @@
+/* settings.css (TYPOGRAPHY + SPACING FIX)
+   ✅ Better typography (font sizes/weights)
+   ✅ Proper spacing between labels + inputs
+   ✅ Profile fields in responsive grid
+   ✅ Thresholds in clean 3-column grid
+*/
+
+.settings-wrap {
+  padding: 28px;
+  max-width: 1050px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #163b1f;
+}
+
+.settings-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.settings-top h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  color: #1b4f2b;
+}
+
+.settings-btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #e9efe6;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 750;
+}
+
+.settings-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.settings-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.settings-card h3 {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 850;
+  color: #163b1f;
+  letter-spacing: 0.2px;
+}
+
+/* ✅ Profile grid (stops the "inline squish") */
+.settings-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+/* ✅ Threshold grid */
+.settings-threshold-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.settings-field {
+  display: grid;
+  gap: 8px;
+}
+
+.settings-field label {
+  font-size: 13px;
+  font-weight: 800;
+  opacity: 0.85;
+  letter-spacing: 0.1px;
+}
+
+.settings-field input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #f3f6f2;
+  outline: none;
+  font-size: 14px;
+  transition: 0.15s ease;
+}
+
+.settings-field input:focus {
+  border-color: rgba(30, 120, 60, 0.55);
+  box-shadow: 0 0 0 3px rgba(183, 230, 0, 0.35);
+}
+
+.settings-field input:disabled {
+  opacity: 0.82;
+  cursor: not-allowed;
+}
+
+.settings-save {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  background: #b7e600;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.settings-save:hover {
+  filter: brightness(0.92);
+  transform: translateY(-1px);
+}
+
+/* ✅ Responsive */
+@media (max-width: 1100px) {
+  .settings-profile-grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .settings-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .settings-top h1 {
+    font-size: 30px;
+  }
+
+  .settings-profile-grid,
+  .settings-threshold-grid {
+    grid-template-columns: 1fr;
+  }
+}

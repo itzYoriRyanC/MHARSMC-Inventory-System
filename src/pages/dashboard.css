@@ -1,0 +1,180 @@
+/* src/pages/dashboard.css
+   ✅ Clean professional dashboard
+   ✅ No white-screen: error card has styles
+*/
+
+.dash-wrap { padding: 20px; }
+
+.dash-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+/* Reuse your typography helpers if you already have them */
+.page-title {
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  margin: 0;
+  color: #0f2f1a;
+}
+.page-subtitle {
+  margin: 8px 0 0;
+  font-size: 14px;
+  opacity: 0.75;
+  color: #0f2f1a;
+}
+
+.dash-btn{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.2);
+  background: #e9efe6;
+  cursor: pointer;
+  font-weight: 900;
+  transition: .18s ease;
+}
+.dash-btn:hover{ background:#fff; transform: translateY(-1px); }
+
+/* Error */
+.dash-error{
+  background:#fff;
+  border-radius:14px;
+  padding:14px 16px;
+  margin-bottom:14px;
+  border:1px solid rgba(179,58,58,.25);
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+.dash-error-title{ font-weight: 900; color:#6b1e1e; }
+.dash-error-msg{ margin-top:6px; font-size:13px; opacity:.85; }
+.dash-error-tip{ margin-top:6px; font-size:12px; opacity:.7; }
+
+/* Summary cards */
+.dash-cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap:14px;
+  margin-bottom:14px;
+}
+.dash-card{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+.dash-card-title{ font-weight:900; color:#0f2f1a; }
+.dash-card-num{ font-size:36px; font-weight:900; margin-top:10px; color:#0f2f1a; }
+.dash-card-sub{ margin-top:6px; font-size:13px; opacity:.75; color:#0f2f1a; }
+
+/* Main grid panels */
+.dash-grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:14px;
+  align-items:start;
+}
+.dash-panel{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+.dash-panel-wide{ grid-column: 1 / -1; }
+
+.dash-panel-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:10px;
+}
+.dash-panel-title{ font-weight:900; color:#0f2f1a; font-size:18px; }
+.dash-panel-sub{ font-size:12px; opacity:.75; margin-top:4px; }
+
+/* Pills */
+.dash-pill{
+  padding:5px 10px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:12px;
+  border:1px solid rgba(0,0,0,.12);
+}
+.dash-pill-alert{ background:#fff1c9; }
+.dash-pill-critical{ background:#ffd6d6; border-color: rgba(179,58,58,.25); }
+.dash-pill-fefo{ background:#ffe0e0; }
+.dash-pill-usage{ background:#e6f2ff; }
+
+/* Tables */
+.dash-table-wrap{
+  width:100%;
+  overflow:auto;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.08);
+}
+.dash-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width: 560px;
+}
+.dash-table th,
+.dash-table td{
+  padding:10px 12px;
+  text-align:left;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  white-space:nowrap;
+}
+.dash-table th{
+  background:#f3f6f2;
+  position:sticky;
+  top:0;
+  z-index:2;
+  font-weight:900;
+}
+
+.dash-empty{ padding:14px; opacity:.75; }
+
+/* FEFO mini KPIs */
+.dash-kpis{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+}
+.dash-kpi{
+  background:#f3f6f2;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+  padding:12px;
+}
+.dash-kpi-label{ font-size:12px; opacity:.75; }
+.dash-kpi-value{ font-size:22px; font-weight:900; margin-top:6px; color:#0f2f1a; }
+
+/* Fast moving list */
+.dash-list{ display:grid; gap:10px; }
+.dash-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  background:#f3f6f2;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:12px;
+  padding:10px 12px;
+}
+.dash-row-name{ font-weight:700; }
+.dash-row-val{ font-weight:900; }
+
+.dash-tip{ margin-top:10px; font-size:12px; opacity:.75; }
+
+@media (max-width: 1100px){
+  .dash-cards{ grid-template-columns: 1fr; }
+  .dash-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 600px){
+  .dash-wrap{ padding:12px; }
+  .page-title{ font-size:30px; }
+}
