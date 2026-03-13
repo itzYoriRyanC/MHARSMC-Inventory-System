@@ -1,0 +1,57 @@
+.users-wrap{
+padding:40px;
+}
+
+.users-grid{
+display:grid;
+grid-template-columns:350px 1fr;
+gap:30px;
+margin-top:20px;
+}
+
+.users-card{
+background:#fff;
+border-radius:14px;
+padding:24px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.users-form{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.users-table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+.users-table th{
+text-align:left;
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+.users-table td{
+padding:12px;
+border-bottom:1px solid #f3f3f3;
+}
+
+.users-btn{
+background:#b7e600;
+border:none;
+padding:12px;
+border-radius:10px;
+font-weight:700;
+cursor:pointer;
+}
+
+.users-btn-small{
+background:#eaeaea;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+}

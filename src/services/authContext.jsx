@@ -1,10 +1,11 @@
 // src/services/authContext.jsx
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./firebase.js";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -12,41 +13,55 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (u) => {
-      setUser(u);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      setUser(firebaseUser);
 
-      // If logged out, clear profile and stop loading
-      if (!u) {
+      if (!firebaseUser) {
         setProfile(null);
         setLoading(false);
         return;
       }
 
-      // Load profile from Firestore: users/{uid}
       try {
-        const ref = doc(db, "users", u.uid);
-        const snap = await getDoc(ref);
-        setProfile(snap.exists() ? snap.data() : null);
-      } catch (err) {
-        console.error("Failed to load profile:", err);
+        const profileRef = doc(db, "users", firebaseUser.uid);
+        const profileSnap = await getDoc(profileRef);
+
+        if (profileSnap.exists()) {
+          setProfile(profileSnap.data());
+        } else {
+          console.warn("No Firestore profile found for user.");
+          setProfile(null);
+        }
+      } catch (error) {
+        console.error("Error loading profile:", error);
         setProfile(null);
-      } finally {
-        setLoading(false);
       }
+
+      setLoading(false);
     });
 
-    return () => unsub();
+    return () => unsubscribe();
   }, []);
 
   const logout = async () => {
-    await signOut(auth);
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  <AuthContext.Provider value={{ user, profile, loading, logout }}>
+    {loading ? (
+      <div style={{ padding: 20 }}>Loading...</div>
+    ) : (
+      children
+    )}
+  </AuthContext.Provider>
+);
 }
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  return useContext(AuthContext);
+};

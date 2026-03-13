@@ -1,22 +1,29 @@
 // src/routes/ProtectedRoute.jsx
+
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../services/authContext";
 
 export default function ProtectedRoute({ allowedRoles = [], children }) {
   const { user, profile, loading } = useAuth();
 
-  if (loading) return <div style={{ padding: 20 }}>Loading...</div>;
+  // Wait for Firebase auth to initialize
+  if (loading) {
+    return <div style={{ padding: "20px" }}>Loading authentication...</div>;
+  }
 
-  // IMPORTANT: use lowercase /login
-  if (!user) return <Navigate to="/login" replace />;
+  // Not logged in
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
+  // Role check (if roles are required)
   const role = profile?.role;
 
   if (allowedRoles.length > 0 && (!role || !allowedRoles.includes(role))) {
     return (
-      <div style={{ padding: 20 }}>
+      <div style={{ padding: "20px" }}>
         <h2>Access Denied</h2>
-        <p>Your account does not have permission to view this page.</p>
+        <p>You do not have permission to view this page.</p>
       </div>
     );
   }
